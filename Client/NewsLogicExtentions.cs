@@ -15,7 +15,7 @@ namespace Client
 
         public static NewsEntity GetNewsEntityById(long id)
         {
-            return new NewsEntity(){CreateDate = DateTime.Now, Text = string.Empty, Id = 0, Name = "New", UserName = "Oleg"; 
+            return new NewsEntity() { CreateDate = DateTime.Now, Text = string.Empty, Id = 0, Name = "New", UserName = "Oleg" };
         }
 
         public static bool CreateNews(string caption, string text, out string message)

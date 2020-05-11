@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.panelControlPanel = new System.Windows.Forms.Panel();
-            this.newsTextPanel = new System.Windows.Forms.Panel();
             this.newsNamePanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.captionTextBox = new System.Windows.Forms.TextBox();
             this.textMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.button1 = new System.Windows.Forms.Button();
             this.sendNewsButton = new System.Windows.Forms.Button();
+            this.dockPanelPanel1 = new System.Windows.Forms.Panel();
+            this.panelViewControlPanel = new System.Windows.Forms.Panel();
+            this.newsCaptionPanel = new System.Windows.Forms.Panel();
             this.panelControlPanel.SuspendLayout();
-            this.newsTextPanel.SuspendLayout();
             this.newsNamePanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textMemoEdit.Properties)).BeginInit();
+            this.dockPanelPanel1.SuspendLayout();
+            this.panelViewControlPanel.SuspendLayout();
+            this.newsCaptionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControlPanel
@@ -55,35 +57,15 @@
             this.panelControlPanel.Size = new System.Drawing.Size(891, 43);
             this.panelControlPanel.TabIndex = 0;
             // 
-            // newsTextPanel
-            // 
-            this.newsTextPanel.Controls.Add(this.captionTextBox);
-            this.newsTextPanel.Controls.Add(this.label1);
-            this.newsTextPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.newsTextPanel.Location = new System.Drawing.Point(0, 0);
-            this.newsTextPanel.Name = "newsTextPanel";
-            this.newsTextPanel.Size = new System.Drawing.Size(891, 50);
-            this.newsTextPanel.TabIndex = 0;
-            // 
             // newsNamePanel
             // 
             this.newsNamePanel.Controls.Add(this.textMemoEdit);
-            this.newsNamePanel.Controls.Add(this.label2);
+            this.newsNamePanel.Controls.Add(this.dockPanelPanel1);
             this.newsNamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newsNamePanel.Location = new System.Drawing.Point(0, 0);
+            this.newsNamePanel.Location = new System.Drawing.Point(0, 50);
             this.newsNamePanel.Name = "newsNamePanel";
-            this.newsNamePanel.Size = new System.Drawing.Size(891, 549);
+            this.newsNamePanel.Size = new System.Drawing.Size(891, 499);
             this.newsNamePanel.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.newsTextPanel);
-            this.panel1.Controls.Add(this.newsNamePanel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(891, 549);
-            this.panel1.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 64);
+            this.label2.Location = new System.Drawing.Point(394, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 0;
@@ -113,10 +95,10 @@
             // 
             // textMemoEdit
             // 
-            this.textMemoEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textMemoEdit.Location = new System.Drawing.Point(0, 80);
+            this.textMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textMemoEdit.Location = new System.Drawing.Point(0, 21);
             this.textMemoEdit.Name = "textMemoEdit";
-            this.textMemoEdit.Size = new System.Drawing.Size(891, 469);
+            this.textMemoEdit.Size = new System.Drawing.Size(891, 478);
             this.textMemoEdit.TabIndex = 1;
             // 
             // button1
@@ -139,21 +121,51 @@
             this.sendNewsButton.UseVisualStyleBackColor = true;
             this.sendNewsButton.Click += new System.EventHandler(this.sendNewsButton_Click);
             // 
+            // dockPanelPanel1
+            // 
+            this.dockPanelPanel1.Controls.Add(this.label2);
+            this.dockPanelPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dockPanelPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelPanel1.Name = "dockPanelPanel1";
+            this.dockPanelPanel1.Size = new System.Drawing.Size(891, 21);
+            this.dockPanelPanel1.TabIndex = 2;
+            // 
+            // panelViewControlPanel
+            // 
+            this.panelViewControlPanel.Controls.Add(this.newsNamePanel);
+            this.panelViewControlPanel.Controls.Add(this.newsCaptionPanel);
+            this.panelViewControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.panelViewControlPanel.Name = "panelViewControlPanel";
+            this.panelViewControlPanel.Size = new System.Drawing.Size(891, 549);
+            this.panelViewControlPanel.TabIndex = 1;
+            // 
+            // newsCaptionPanel
+            // 
+            this.newsCaptionPanel.Controls.Add(this.captionTextBox);
+            this.newsCaptionPanel.Controls.Add(this.label1);
+            this.newsCaptionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.newsCaptionPanel.Location = new System.Drawing.Point(0, 0);
+            this.newsCaptionPanel.Name = "newsCaptionPanel";
+            this.newsCaptionPanel.Size = new System.Drawing.Size(891, 50);
+            this.newsCaptionPanel.TabIndex = 0;
+            // 
             // CreateNewsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelViewControlPanel);
             this.Controls.Add(this.panelControlPanel);
             this.Name = "CreateNewsControl";
             this.Size = new System.Drawing.Size(891, 592);
             this.panelControlPanel.ResumeLayout(false);
-            this.newsTextPanel.ResumeLayout(false);
-            this.newsTextPanel.PerformLayout();
             this.newsNamePanel.ResumeLayout(false);
-            this.newsNamePanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textMemoEdit.Properties)).EndInit();
+            this.dockPanelPanel1.ResumeLayout(false);
+            this.dockPanelPanel1.PerformLayout();
+            this.panelViewControlPanel.ResumeLayout(false);
+            this.newsCaptionPanel.ResumeLayout(false);
+            this.newsCaptionPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,12 +175,13 @@
         private System.Windows.Forms.Panel panelControlPanel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button sendNewsButton;
-        private System.Windows.Forms.Panel newsTextPanel;
         private System.Windows.Forms.TextBox captionTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel newsNamePanel;
         private DevExpress.XtraEditors.MemoEdit textMemoEdit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel dockPanelPanel1;
+        private System.Windows.Forms.Panel panelViewControlPanel;
+        private System.Windows.Forms.Panel newsCaptionPanel;
     }
 }

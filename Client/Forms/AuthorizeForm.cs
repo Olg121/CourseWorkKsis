@@ -23,6 +23,7 @@ namespace Client.Forms
 
             if (authorizeResult)
             {
+                DialogResult = DialogResult.OK; 
                 Close();
             }
             else
@@ -33,7 +34,8 @@ namespace Client.Forms
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Close(); 
+            Close();
+            DialogResult = DialogResult.Cancel; 
         }
 
         private void registrationButton_Click(object sender, EventArgs e)
