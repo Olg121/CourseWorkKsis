@@ -1,0 +1,174 @@
+﻿namespace Client.Controls
+{
+    partial class CreateNewsControl
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panelControlPanel = new System.Windows.Forms.Panel();
+            this.newsTextPanel = new System.Windows.Forms.Panel();
+            this.newsNamePanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.captionTextBox = new System.Windows.Forms.TextBox();
+            this.textMemoEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.button1 = new System.Windows.Forms.Button();
+            this.sendNewsButton = new System.Windows.Forms.Button();
+            this.panelControlPanel.SuspendLayout();
+            this.newsTextPanel.SuspendLayout();
+            this.newsNamePanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textMemoEdit.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panelControlPanel
+            // 
+            this.panelControlPanel.Controls.Add(this.button1);
+            this.panelControlPanel.Controls.Add(this.sendNewsButton);
+            this.panelControlPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControlPanel.Location = new System.Drawing.Point(0, 549);
+            this.panelControlPanel.Name = "panelControlPanel";
+            this.panelControlPanel.Size = new System.Drawing.Size(891, 43);
+            this.panelControlPanel.TabIndex = 0;
+            // 
+            // newsTextPanel
+            // 
+            this.newsTextPanel.Controls.Add(this.captionTextBox);
+            this.newsTextPanel.Controls.Add(this.label1);
+            this.newsTextPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.newsTextPanel.Location = new System.Drawing.Point(0, 0);
+            this.newsTextPanel.Name = "newsTextPanel";
+            this.newsTextPanel.Size = new System.Drawing.Size(891, 50);
+            this.newsTextPanel.TabIndex = 0;
+            // 
+            // newsNamePanel
+            // 
+            this.newsNamePanel.Controls.Add(this.textMemoEdit);
+            this.newsNamePanel.Controls.Add(this.label2);
+            this.newsNamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsNamePanel.Location = new System.Drawing.Point(0, 0);
+            this.newsNamePanel.Name = "newsNamePanel";
+            this.newsNamePanel.Size = new System.Drawing.Size(891, 549);
+            this.newsNamePanel.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.newsTextPanel);
+            this.panel1.Controls.Add(this.newsNamePanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(891, 549);
+            this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(410, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Тема";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(391, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Содержание";
+            // 
+            // captionTextBox
+            // 
+            this.captionTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.captionTextBox.Location = new System.Drawing.Point(0, 29);
+            this.captionTextBox.Name = "captionTextBox";
+            this.captionTextBox.Size = new System.Drawing.Size(891, 21);
+            this.captionTextBox.TabIndex = 1;
+            // 
+            // textMemoEdit
+            // 
+            this.textMemoEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textMemoEdit.Location = new System.Drawing.Point(0, 80);
+            this.textMemoEdit.Name = "textMemoEdit";
+            this.textMemoEdit.Size = new System.Drawing.Size(891, 469);
+            this.textMemoEdit.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(716, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 34);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Очистить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // sendNewsButton
+            // 
+            this.sendNewsButton.Location = new System.Drawing.Point(805, 6);
+            this.sendNewsButton.Name = "sendNewsButton";
+            this.sendNewsButton.Size = new System.Drawing.Size(83, 34);
+            this.sendNewsButton.TabIndex = 3;
+            this.sendNewsButton.Text = "Отправить новость";
+            this.sendNewsButton.UseVisualStyleBackColor = true;
+            this.sendNewsButton.Click += new System.EventHandler(this.sendNewsButton_Click);
+            // 
+            // CreateNewsControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControlPanel);
+            this.Name = "CreateNewsControl";
+            this.Size = new System.Drawing.Size(891, 592);
+            this.panelControlPanel.ResumeLayout(false);
+            this.newsTextPanel.ResumeLayout(false);
+            this.newsTextPanel.PerformLayout();
+            this.newsNamePanel.ResumeLayout(false);
+            this.newsNamePanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textMemoEdit.Properties)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panelControlPanel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sendNewsButton;
+        private System.Windows.Forms.Panel newsTextPanel;
+        private System.Windows.Forms.TextBox captionTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel newsNamePanel;
+        private DevExpress.XtraEditors.MemoEdit textMemoEdit;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+    }
+}
