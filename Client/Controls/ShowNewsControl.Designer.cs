@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.refreshButton = new System.Windows.Forms.Button();
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.newsViewPanel = new System.Windows.Forms.Panel();
-            this.newsInfoPanel = new System.Windows.Forms.Panel();
-            this.newsTextMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.newsMemoEditPanel = new System.Windows.Forms.Panel();
-            this.authorNameLabel = new System.Windows.Forms.Label();
-            this.authorNameValueLabel = new System.Windows.Forms.Label();
+            this.newsTextMemoEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.newsInfoPanel = new System.Windows.Forms.Panel();
             this.createDateValueLabel = new System.Windows.Forms.Label();
             this.createDateLabel = new System.Windows.Forms.Label();
+            this.authorNameValueLabel = new System.Windows.Forms.Label();
+            this.authorNameLabel = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             this.newsViewPanel.SuspendLayout();
-            this.newsInfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.newsTextMemoEdit.Properties)).BeginInit();
             this.newsMemoEditPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.newsTextMemoEdit.Properties)).BeginInit();
+            this.newsInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -57,6 +57,15 @@
             this.menuPanel.Size = new System.Drawing.Size(167, 563);
             this.menuPanel.TabIndex = 0;
             // 
+            // listBoxControl1
+            // 
+            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControl1.Location = new System.Drawing.Point(0, 23);
+            this.listBoxControl1.Name = "listBoxControl1";
+            this.listBoxControl1.Size = new System.Drawing.Size(167, 540);
+            this.listBoxControl1.TabIndex = 1;
+            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
+            // 
             // refreshButton
             // 
             this.refreshButton.Dock = System.Windows.Forms.DockStyle.Top;
@@ -68,15 +77,6 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
-            // listBoxControl1
-            // 
-            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl1.Location = new System.Drawing.Point(0, 23);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(167, 540);
-            this.listBoxControl1.TabIndex = 1;
-            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
-            // 
             // newsViewPanel
             // 
             this.newsViewPanel.Controls.Add(this.newsMemoEditPanel);
@@ -86,6 +86,23 @@
             this.newsViewPanel.Name = "newsViewPanel";
             this.newsViewPanel.Size = new System.Drawing.Size(606, 563);
             this.newsViewPanel.TabIndex = 1;
+            // 
+            // newsMemoEditPanel
+            // 
+            this.newsMemoEditPanel.Controls.Add(this.newsTextMemoEdit);
+            this.newsMemoEditPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsMemoEditPanel.Location = new System.Drawing.Point(0, 44);
+            this.newsMemoEditPanel.Name = "newsMemoEditPanel";
+            this.newsMemoEditPanel.Size = new System.Drawing.Size(606, 519);
+            this.newsMemoEditPanel.TabIndex = 1;
+            // 
+            // newsTextMemoEdit
+            // 
+            this.newsTextMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsTextMemoEdit.Location = new System.Drawing.Point(0, 0);
+            this.newsTextMemoEdit.Name = "newsTextMemoEdit";
+            this.newsTextMemoEdit.Size = new System.Drawing.Size(606, 519);
+            this.newsTextMemoEdit.TabIndex = 0;
             // 
             // newsInfoPanel
             // 
@@ -98,40 +115,6 @@
             this.newsInfoPanel.Name = "newsInfoPanel";
             this.newsInfoPanel.Size = new System.Drawing.Size(606, 44);
             this.newsInfoPanel.TabIndex = 0;
-            // 
-            // newsTextMemoEdit
-            // 
-            this.newsTextMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newsTextMemoEdit.Location = new System.Drawing.Point(0, 0);
-            this.newsTextMemoEdit.Name = "newsTextMemoEdit";
-            this.newsTextMemoEdit.Size = new System.Drawing.Size(606, 519);
-            this.newsTextMemoEdit.TabIndex = 0;
-            // 
-            // newsMemoEditPanel
-            // 
-            this.newsMemoEditPanel.Controls.Add(this.newsTextMemoEdit);
-            this.newsMemoEditPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newsMemoEditPanel.Location = new System.Drawing.Point(0, 44);
-            this.newsMemoEditPanel.Name = "newsMemoEditPanel";
-            this.newsMemoEditPanel.Size = new System.Drawing.Size(606, 519);
-            this.newsMemoEditPanel.TabIndex = 1;
-            // 
-            // authorNameLabel
-            // 
-            this.authorNameLabel.AutoSize = true;
-            this.authorNameLabel.Location = new System.Drawing.Point(6, 10);
-            this.authorNameLabel.Name = "authorNameLabel";
-            this.authorNameLabel.Size = new System.Drawing.Size(38, 13);
-            this.authorNameLabel.TabIndex = 0;
-            this.authorNameLabel.Text = "Автор";
-            // 
-            // authorNameValueLabel
-            // 
-            this.authorNameValueLabel.AutoSize = true;
-            this.authorNameValueLabel.Location = new System.Drawing.Point(50, 10);
-            this.authorNameValueLabel.Name = "authorNameValueLabel";
-            this.authorNameValueLabel.Size = new System.Drawing.Size(0, 13);
-            this.authorNameValueLabel.TabIndex = 1;
             // 
             // createDateValueLabel
             // 
@@ -150,6 +133,23 @@
             this.createDateLabel.TabIndex = 2;
             this.createDateLabel.Text = "Дата создания";
             // 
+            // authorNameValueLabel
+            // 
+            this.authorNameValueLabel.AutoSize = true;
+            this.authorNameValueLabel.Location = new System.Drawing.Point(50, 10);
+            this.authorNameValueLabel.Name = "authorNameValueLabel";
+            this.authorNameValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.authorNameValueLabel.TabIndex = 1;
+            // 
+            // authorNameLabel
+            // 
+            this.authorNameLabel.AutoSize = true;
+            this.authorNameLabel.Location = new System.Drawing.Point(6, 10);
+            this.authorNameLabel.Name = "authorNameLabel";
+            this.authorNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.authorNameLabel.TabIndex = 0;
+            this.authorNameLabel.Text = "Автор";
+            // 
             // ShowNewsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,10 +161,10 @@
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             this.newsViewPanel.ResumeLayout(false);
+            this.newsMemoEditPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.newsTextMemoEdit.Properties)).EndInit();
             this.newsInfoPanel.ResumeLayout(false);
             this.newsInfoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.newsTextMemoEdit.Properties)).EndInit();
-            this.newsMemoEditPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SharedGateway;
+using System;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using static SharedGateway.AuthDataAnswer;
 
 namespace Server
 {
@@ -55,14 +59,23 @@ namespace Server
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     }
                     while (stream.DataAvailable);
+                    var message = JsonConvert.DeserializeObject<Message>(builder.ToString());
 
+                    Message answerMessage = null; 
 
-                    string message = builder.ToString();
+                    if(message.MessageType == Message.MessageTypeEnum.Authorize)
+                    {
+                        var answer = Authorize(message);
+                        answerMessage = new Message()
+                        { 
+                            MessageText = JsonConvert.SerializeObject(answer),
+                            MessageType = Message.MessageTypeEnum.AuthorizeAnswer
+                        };
+                    }
 
-                    Console.WriteLine(message);
-                    // отправляем обратно сообщение в верхнем регистре
+                    Console.WriteLine(answerMessage.MessageText);
 
-                    data = Encoding.Unicode.GetBytes(message);
+                    data = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(answerMessage));
                     stream.Write(data, 0, data.Length);
                 }
             }
@@ -77,6 +90,22 @@ namespace Server
                 if (client != null)
                     client.Close();
             }
+        }
+
+        public AuthDataAnswer Authorize(Message message)
+        {
+            var authData = JsonConvert.DeserializeObject<AuthData>(message.MessageText);
+            var user = ServerData.Users.FirstOrDefault(x => x.Login == authData.Login);
+            var authDataAnswer = new AuthDataAnswer();
+
+            if (user == null)
+                authDataAnswer.Message = AuthMessage.AcountNotFound;
+            else
+            if (user.Password != authData.Password)
+                authDataAnswer.Message = AuthMessage.IncorrectPassword;
+            else
+                authDataAnswer.Message = AuthMessage.Correct;
+            return authDataAnswer; 
         }
     }
 }

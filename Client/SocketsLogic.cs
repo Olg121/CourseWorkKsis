@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using SharedGateway;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace Client
 {
@@ -15,7 +18,7 @@ namespace Client
         private const int port = 5533;
         private const string serverAdress = "127.0.0.1"; 
         
-        public string SendMessage(string message, out string exceptionMessage)
+        public Message SendMessage(Message message, out string exceptionMessage)
         {
             exceptionMessage = string.Empty; 
             try
@@ -23,7 +26,7 @@ namespace Client
                 var client = new TcpClient(serverAdress, port);
                 var stream = client.GetStream();
                 
-                var data = Encoding.Unicode.GetBytes(message);
+                var data = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(message));
                 stream.Write(data, 0, data.Length);
 
                 data = new byte[64]; 
@@ -37,19 +40,13 @@ namespace Client
                 }
                 while (stream.DataAvailable);
 
-                return builder.ToString();
+                return JsonConvert.DeserializeObject<Message>(builder.ToString());
             }
             catch (Exception e)
             {
                 exceptionMessage = e.Message;
                 return null; 
-            }
-
-
-         
+            }         
         }
-
-
-
     }
 }
