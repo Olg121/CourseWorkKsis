@@ -15,6 +15,7 @@ namespace Client
 
         public static bool AuthorizeClient(string login, string password, out string errorMessage)
         {
+            
             errorMessage = "";
             UserName = login; 
             return Authorized = true; 
