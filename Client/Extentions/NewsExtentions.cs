@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SharedGateway;
 namespace Client
 {
-    class NewsLogicExtentions
+    class NewsExtentions
     {
         public static List<NewsEntityLite> GetNewsList()
         {
@@ -29,7 +29,7 @@ namespace Client
             var newsEntity = new NewsEntity()
             {
                 CreateDate = DateTime.Now,
-                UserName = Authorize.UserName,
+                UserName = AuthorizeExtentions.UserName,
                 Name = caption,
                 Text = text
             };

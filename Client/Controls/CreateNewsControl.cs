@@ -20,7 +20,7 @@ namespace Client.Controls
 
         private void sendNewsButton_Click(object sender, EventArgs e)
         {
-            var sendResult = NewsLogicExtentions.CreateNews(captionTextBox.Text, textMemoEdit.Text, out string errorMessage);
+            var sendResult = NewsExtentions.CreateNews(captionTextBox.Text, textMemoEdit.Text, out string errorMessage);
 
             if (sendResult)
             {

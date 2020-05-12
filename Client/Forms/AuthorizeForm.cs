@@ -19,7 +19,7 @@ namespace Client.Forms
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            var authorizeResult = Authorize.AuthorizeClient(loginTextBox.Text, passwordTextBox.Text, out string message);
+            var authorizeResult = AuthorizeExtentions.AuthorizeClient(loginTextBox.Text, passwordTextBox.Text, out string message);
 
             if (authorizeResult)
             {

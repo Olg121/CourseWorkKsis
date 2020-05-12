@@ -23,13 +23,13 @@ namespace Client.Controls
         private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedItem = listBoxControl1.SelectedItem as NewsEntityLite;
-            var newsEntity = NewsLogicExtentions.GetNewsEntityById(selectedItem.Id);
+            var newsEntity = NewsExtentions.GetNewsEntityById(selectedItem.Id);
             SetNews(newsEntity);
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            listBoxControl1.DataSource = NewsLogicExtentions.GetNewsList(); 
+            listBoxControl1.DataSource = NewsExtentions.GetNewsList(); 
         }
 
         private void SetNews(NewsEntity entity)

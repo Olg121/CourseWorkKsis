@@ -19,7 +19,7 @@ namespace Client.Forms
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            var registrResul = Authorize.RegisterClient(loginTextBox.Text, passwordTextBox.Text, out string message);
+            var registrResul = AuthorizeExtentions.RegisterClient(loginTextBox.Text, passwordTextBox.Text, out string message);
 
             if (registrResul)
             {

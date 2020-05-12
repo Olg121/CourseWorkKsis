@@ -10,17 +10,17 @@ using DevExpress.Utils.IoC;
 
 namespace Client
 {
-    class Authorize
+    class AuthorizeExtentions
     {
         public static bool Authorized { get; set; } = false;
         public static string UserName { get; set; } = string.Empty; 
 
-        public SocketsLogic SocketsLogic { get; set; }
+        public SocketsExtentions SocketsLogic { get; set; }
 
 
         public static bool AuthorizeClient(string login, string password, out string errorMessage)
         {
-            var socketLogic = SocketsLogic.SocketsLogicInstance; 
+            var socketLogic = SocketsExtentions.SocketsLogicInstance; 
             var authData = new AuthData { Login = login, Password = password };
             var message = new Message { MessageText = JsonConvert.SerializeObject(authData), MessageType = Message.MessageTypeEnum.Authorize };
             
@@ -43,7 +43,7 @@ namespace Client
         public static bool RegisterClient(string login, string password, out string errorMessage)
         {
             errorMessage = "";
-            var socketLogic = SocketsLogic.SocketsLogicInstance;
+            var socketLogic = SocketsExtentions.SocketsLogicInstance;
             var authData = new AuthData 
             { 
                 Login = login, 
