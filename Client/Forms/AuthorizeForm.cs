@@ -28,7 +28,7 @@ namespace Client.Forms
             }
             else
             if (message != string.Empty)
-                MessageBox.Show("Ошибка авторизации", message); 
+                MessageBox.Show(message, "Ошибка авторизации"); 
         
         }
 
