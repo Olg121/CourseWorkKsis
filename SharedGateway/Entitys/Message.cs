@@ -12,7 +12,10 @@ namespace SharedGateway
             Authorize,
             AuthorizeAnswer,
             Registration,
-            RegistrationAnswer
+            RegistrationAnswer,
+            GetNewsEntitysLiteList,
+            GetNewsEntity,
+            CreateNewsEntity
         }
         public MessageTypeEnum MessageType {get; set; }
     }
