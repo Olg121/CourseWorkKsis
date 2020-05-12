@@ -16,14 +16,23 @@ namespace Client
     {
         public static SocketsExtentions SocketsLogicInstance; 
         private const int port = 5533;
-        private const string serverAdress = "127.0.0.1"; 
+        private const string serverAdress = "127.0.0.1";
+
+        private TcpClient client; 
+
+        private TcpClient GetClient()
+        {
+            if(client == null)
+                client = new TcpClient(serverAdress, port);
+            return client; 
+        }
         
         public Message SendMessage(Message message, out string exceptionMessage)
         {
             exceptionMessage = string.Empty; 
             try
             {
-                var client = new TcpClient(serverAdress, port);
+                var client = GetClient(); 
                 var stream = client.GetStream();
                 
                 var data = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(message));

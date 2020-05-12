@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SharedGateway;
+using SharedGateway.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,23 +67,20 @@ namespace Server
 
                     if (message.MessageType == Message.MessageTypeEnum.Authorize)
                     {
-                        var answer = Authorize(message);
-                        answerMessage = new Message()
-                        { 
-                            MessageText = JsonConvert.SerializeObject(answer),
-                            MessageType = Message.MessageTypeEnum.AuthorizeAnswer
-                        };
+                        answerMessage = CreateMessageAnswer(Authorize(message), Message.MessageTypeEnum.AuthorizeAnswer);
                     }
 
                     if (message.MessageType == Message.MessageTypeEnum.Registration)
                     {
-                        var answer = Registration(message);
-                        answerMessage = new Message()
-                        {
-                            MessageText = JsonConvert.SerializeObject(answer),
-                            MessageType = Message.MessageTypeEnum.RegistrationAnswer
-                        };
+                        answerMessage = CreateMessageAnswer(Registration(message), Message.MessageTypeEnum.RegistrationAnswer); 
                     }
+
+                    if (message.MessageType == Message.MessageTypeEnum.GetNewsEntitysLiteList)
+                    {
+
+                    }    
+
+                    
 
                     Console.WriteLine(answerMessage.MessageText);
 
@@ -101,6 +99,16 @@ namespace Server
                 if (client != null)
                     client.Close();
             }
+        }
+
+
+        private Message CreateMessageAnswer(object message, Message.MessageTypeEnum type)
+        {
+            return new Message()
+            {
+                MessageText = JsonConvert.SerializeObject(message),
+                MessageType = Message.MessageTypeEnum.RegistrationAnswer
+            };
         }
 
         public AuthDataAnswer Authorize(Message message)
@@ -135,15 +143,40 @@ namespace Server
             return answer; 
         }
 
-        public List<NewsEntityLite> GetNewsEntityLiteList()
+        public GetNewsEntitysLiteListAnswer GetNewsEntityLiteList()
         {
-            return ServerData.NewsEntities.Select(x => new NewsEntityLite() { Id = x.Id, Name = x.Name }).ToList();
+            var answer = new GetNewsEntitysLiteListAnswer
+            {
+                NewsEntityLiteList = ServerData.NewsEntities.Select(x => new NewsEntityLite() { Id = x.Id, Name = x.Name }).ToList()
+            };
+
+            return answer;
         }
 
-        public NewsEntity GetNewsEntity(Message message)
+        public GetNewsEntityAnswer GetNewsEntity(Message message)
         {
+            var newsEntityId = JsonConvert.DeserializeObject<GetNewsEntityRequest>(message.MessageText).Id;
+            var answer = new GetNewsEntityAnswer
+            {
+                newsEntity = ServerData.NewsEntities.FirstOrDefault(x => x.Id == newsEntityId)
+            };
+            return answer; 
+        }
 
-            return ServerData.NewsEntities.FirstOrDefault(x => x.Id == 0); 
+        public CreateNewsEntityAnswer CreateNewsEntity(Message message)
+        {
+            var newsEntity = JsonConvert.DeserializeObject<CreateNewsEntityRequest>(message.MessageText).NewsEntity;
+            long id;
+            Random random = new Random(); 
+            do
+            {
+                id = random.Next(); 
+            } while (ServerData.NewsEntities.Any(x => x.Id == id));
+
+            newsEntity.Id = id; 
+            ServerData.NewsEntities.Add(newsEntity);
+
+            return new CreateNewsEntityAnswer(); 
         }
     }
 }

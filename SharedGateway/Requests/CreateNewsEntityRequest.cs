@@ -4,7 +4,8 @@ using System.Text;
 
 namespace SharedGateway.Requests
 {
-    class CreateNewsEntityRequest
+    public class CreateNewsEntityRequest
     {
+        public NewsEntity NewsEntity { get; set; }
     }
 }

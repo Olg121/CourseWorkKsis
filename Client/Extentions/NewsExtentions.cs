@@ -22,7 +22,7 @@ namespace Client
 
         public static NewsEntity GetNewsEntityById(long id)
         {
-
+            var socketLogic = SocketsExtentions.SocketsLogicInstance; 
 
             return new NewsEntity() { CreateDate = DateTime.Now, Text = string.Empty, Id = 0, Name = "New", UserName = "Oleg" };
         }
