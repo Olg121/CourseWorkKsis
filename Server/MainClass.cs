@@ -77,10 +77,19 @@ namespace Server
 
                     if (message.MessageType == Message.MessageTypeEnum.GetNewsEntitysLiteList)
                     {
+                        answerMessage = CreateMessageAnswer(GetNewsEntityLiteList(), Message.MessageTypeEnum.GetNewsEntitysLiteListAnswer);
+                    }
 
-                    }    
+                    if (message.MessageType == Message.MessageTypeEnum.CreateNewsEntity)
+                    {
+                        answerMessage = CreateMessageAnswer(CreateNewsEntity(message), Message.MessageTypeEnum.CreateNewsEntityAnswer);
+                    }
 
-                    
+                    if (message.MessageType == Message.MessageTypeEnum.GetNewsEntity)
+                    {
+                        answerMessage = CreateMessageAnswer(GetNewsEntity(message), Message.MessageTypeEnum.GetNewsEntityAnswer);
+                    }
+
 
                     Console.WriteLine(answerMessage.MessageText);
 

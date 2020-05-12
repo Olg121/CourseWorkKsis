@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SharedGateway;
+using SharedGateway.Requests;
+
 namespace Client
 {
     class NewsExtentions
@@ -22,16 +24,19 @@ namespace Client
 
         public static NewsEntity GetNewsEntityById(long id)
         {
-            var socketLogic = SocketsExtentions.SocketsLogicInstance; 
-
-            return new NewsEntity() { CreateDate = DateTime.Now, Text = string.Empty, Id = 0, Name = "New", UserName = "Oleg" };
+            var socketLogic = SocketsExtentions.SocketsLogicInstance;
+            var request = new GetNewsEntityRequest { Id = id };
+            var message = new Message { MessageText = JsonConvert.SerializeObject(request), MessageType = Message.MessageTypeEnum.GetNewsEntity };
+            var answerMessage = socketLogic.SendMessage(message, out _);
+            var newsEntity = JsonConvert.DeserializeObject<GetNewsEntityAnswer>(answerMessage.MessageText).newsEntity;
+            return newsEntity; 
         }
 
-        public static bool CreateNews(string caption, string text, out string message)
+        public static bool CreateNews(string caption, string text, out string exceptionMessage)
         {
             if(string.IsNullOrWhiteSpace(caption) || string.IsNullOrWhiteSpace(text))
             {
-                message = "Заполните поля";
+                exceptionMessage = "Заполните поля";
                 return false;
             }
 
@@ -43,9 +48,15 @@ namespace Client
                 Text = text
             };
 
+            var socketLogic = SocketsExtentions.SocketsLogicInstance;
+            var request = new CreateNewsEntityRequest { NewsEntity = newsEntity };
+            var message = new Message { MessageText = JsonConvert.SerializeObject(request), MessageType = Message.MessageTypeEnum.CreateNewsEntity };
+            var answerMessage = socketLogic.SendMessage(message, out _);
 
 
-            message = string.Empty; 
+
+
+            exceptionMessage = string.Empty; 
             return true; 
         }
 

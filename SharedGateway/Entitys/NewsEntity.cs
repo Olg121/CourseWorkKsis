@@ -23,5 +23,9 @@ namespace SharedGateway
     {
         public string Name { get; set; }
         public long Id { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
