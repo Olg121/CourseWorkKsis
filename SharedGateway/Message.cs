@@ -10,7 +10,9 @@ namespace SharedGateway
         public enum MessageTypeEnum
         {
             Authorize,
-            AuthorizeAnswer
+            AuthorizeAnswer,
+            Registration,
+            RegistrationAnswer
         }
         public MessageTypeEnum MessageType {get; set; }
     }

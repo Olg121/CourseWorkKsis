@@ -71,12 +71,6 @@
     <Compile Include="Controls\ShowNewsControl.Designer.cs">
       <DependentUpon>ShowNewsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AuthorizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +139,9 @@
       <Project>{5f32c21a-3e74-4115-8c54-f059ec547143}</Project>
       <Name>SharedGateway</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
