@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using SharedGateway;
 namespace Client
 {
@@ -10,11 +11,19 @@ namespace Client
     {
         public static List<NewsEntityLite> GetNewsList()
         {
-            return new List<NewsEntityLite>(); 
+            var socketLogic = SocketsExtentions.SocketsLogicInstance;
+            var message = new Message { MessageText = "", MessageType = Message.MessageTypeEnum.GetNewsEntitysLiteList };
+            
+            var answerMessage = socketLogic.SendMessage(message, out _);
+            var answer = JsonConvert.DeserializeObject<GetNewsEntitysLiteListAnswer>(answerMessage.MessageText);
+
+            return answer.NewsEntityLiteList; 
         }
 
         public static NewsEntity GetNewsEntityById(long id)
         {
+
+
             return new NewsEntity() { CreateDate = DateTime.Now, Text = string.Empty, Id = 0, Name = "New", UserName = "Oleg" };
         }
 
@@ -33,6 +42,8 @@ namespace Client
                 Name = caption,
                 Text = text
             };
+
+
 
             message = string.Empty; 
             return true; 

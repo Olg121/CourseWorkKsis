@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SharedGateway
+namespace SharedGateway.Requests
 {
-    public class CreateNewsEntityAnswer
+    class CreateNewsEntityRequest
     {
     }
 }

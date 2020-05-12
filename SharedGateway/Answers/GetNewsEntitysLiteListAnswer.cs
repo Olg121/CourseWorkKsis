@@ -4,7 +4,8 @@ using System.Text;
 
 namespace SharedGateway
 {
-    class GetNewsEntitysLiteListAnswer
+    public class GetNewsEntitysLiteListAnswer
     {
+        public List<NewsEntityLite> NewsEntityLiteList { get; set; }
     }
 }
