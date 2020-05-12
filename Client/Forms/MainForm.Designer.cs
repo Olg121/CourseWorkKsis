@@ -30,9 +30,9 @@
         {
             this.currentModePanel = new System.Windows.Forms.Panel();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.showNewsButton = new System.Windows.Forms.Button();
-            this.createNewsButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.createNewsButton = new System.Windows.Forms.Button();
+            this.showNewsButton = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,16 +55,15 @@
             this.menuPanel.Size = new System.Drawing.Size(122, 700);
             this.menuPanel.TabIndex = 1;
             // 
-            // showNewsButton
+            // closeButton
             // 
-            this.showNewsButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.showNewsButton.Location = new System.Drawing.Point(0, 0);
-            this.showNewsButton.Name = "showNewsButton";
-            this.showNewsButton.Size = new System.Drawing.Size(122, 27);
-            this.showNewsButton.TabIndex = 0;
-            this.showNewsButton.Text = "Показать новости";
-            this.showNewsButton.UseVisualStyleBackColor = true;
-            this.showNewsButton.Click += new System.EventHandler(this.showNewsButton_Click);
+            this.closeButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.closeButton.Location = new System.Drawing.Point(0, 673);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(122, 27);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "Выход";
+            this.closeButton.UseVisualStyleBackColor = true;
             // 
             // createNewsButton
             // 
@@ -77,15 +76,16 @@
             this.createNewsButton.UseVisualStyleBackColor = true;
             this.createNewsButton.Click += new System.EventHandler(this.createNewsButton_Click);
             // 
-            // closeButton
+            // showNewsButton
             // 
-            this.closeButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.closeButton.Location = new System.Drawing.Point(0, 673);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(122, 27);
-            this.closeButton.TabIndex = 2;
-            this.closeButton.Text = "Выход";
-            this.closeButton.UseVisualStyleBackColor = true;
+            this.showNewsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.showNewsButton.Location = new System.Drawing.Point(0, 0);
+            this.showNewsButton.Name = "showNewsButton";
+            this.showNewsButton.Size = new System.Drawing.Size(122, 27);
+            this.showNewsButton.TabIndex = 0;
+            this.showNewsButton.Text = "Показать новости";
+            this.showNewsButton.UseVisualStyleBackColor = true;
+            this.showNewsButton.Click += new System.EventHandler(this.showNewsButton_Click);
             // 
             // MainForm
             // 
@@ -95,6 +95,7 @@
             this.Controls.Add(this.currentModePanel);
             this.Controls.Add(this.menuPanel);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MainForm";
             this.menuPanel.ResumeLayout(false);
             this.ResumeLayout(false);

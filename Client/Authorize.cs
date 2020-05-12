@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SharedGateway;
 using Newtonsoft;
 using Newtonsoft.Json;
+using DevExpress.Utils.IoC;
 
 namespace Client
 {
@@ -19,7 +20,7 @@ namespace Client
 
         public static bool AuthorizeClient(string login, string password, out string errorMessage)
         {
-            var socketLogic = new SocketsLogic();
+            var socketLogic = SocketsLogic.SocketsLogicInstance; 
             var authData = new AuthData { Login = login, Password = password };
             var message = new Message { MessageText = JsonConvert.SerializeObject(authData), MessageType = Message.MessageTypeEnum.Authorize };
             
@@ -41,8 +42,28 @@ namespace Client
 
         public static bool RegisterClient(string login, string password, out string errorMessage)
         {
-            errorMessage = ""; 
-            return true; 
+            errorMessage = "";
+            var socketLogic = SocketsLogic.SocketsLogicInstance;
+            var authData = new AuthData 
+            { 
+                Login = login, 
+                Password = password 
+            };
+            var message = new Message 
+            {
+                MessageText = JsonConvert.SerializeObject(authData),
+                MessageType = Message.MessageTypeEnum.Registration 
+            };            
+
+
+            var answerMessage = socketLogic.SendMessage(message, out errorMessage);
+
+            var authDataAnswer = JsonConvert.DeserializeObject<RegistrationAnswer>(answerMessage.MessageText);
+            if (authDataAnswer.Message == RegistrationAnswer.RegistrationMessage.Correct)
+                return true;
+
+            errorMessage = "Пользователь с таким логином уже существует"; 
+            return false; 
         }
 
 

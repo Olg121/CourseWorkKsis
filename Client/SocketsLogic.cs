@@ -12,9 +12,9 @@ using Newtonsoft.Json;
 
 namespace Client
 {
-    class SocketsLogic
+    public class SocketsLogic
     {
-
+        public static SocketsLogic SocketsLogicInstance; 
         private const int port = 5533;
         private const string serverAdress = "127.0.0.1"; 
         

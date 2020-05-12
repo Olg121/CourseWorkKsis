@@ -17,7 +17,7 @@ namespace Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            SocketsLogic.SocketsLogicInstance = new SocketsLogic(); 
             using (var authorizeForm = new AuthorizeForm())
             {
                 authorizeForm.ShowDialog();

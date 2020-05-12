@@ -63,7 +63,7 @@
             this.passwordTextBox.MaximumSize = new System.Drawing.Size(210, 30);
             this.passwordTextBox.MinimumSize = new System.Drawing.Size(210, 30);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(210, 30);
+            this.passwordTextBox.Size = new System.Drawing.Size(210, 20);
             this.passwordTextBox.TabIndex = 11;
             // 
             // loginTextBox
@@ -72,7 +72,7 @@
             this.loginTextBox.MaximumSize = new System.Drawing.Size(210, 30);
             this.loginTextBox.MinimumSize = new System.Drawing.Size(210, 30);
             this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(210, 30);
+            this.loginTextBox.Size = new System.Drawing.Size(210, 20);
             this.loginTextBox.TabIndex = 10;
             // 
             // registerLabel
@@ -118,6 +118,7 @@
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
             this.Name = "RegistrationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RegistrationForm";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SharedGateway;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -63,13 +64,23 @@ namespace Server
 
                     Message answerMessage = null; 
 
-                    if(message.MessageType == Message.MessageTypeEnum.Authorize)
+                    if (message.MessageType == Message.MessageTypeEnum.Authorize)
                     {
                         var answer = Authorize(message);
                         answerMessage = new Message()
                         { 
                             MessageText = JsonConvert.SerializeObject(answer),
                             MessageType = Message.MessageTypeEnum.AuthorizeAnswer
+                        };
+                    }
+
+                    if (message.MessageType == Message.MessageTypeEnum.Registration)
+                    {
+                        var answer = Registration(message);
+                        answerMessage = new Message()
+                        {
+                            MessageText = JsonConvert.SerializeObject(answer),
+                            MessageType = Message.MessageTypeEnum.RegistrationAnswer
                         };
                     }
 
@@ -106,6 +117,33 @@ namespace Server
             else
                 authDataAnswer.Message = AuthMessage.Correct;
             return authDataAnswer; 
+        }
+    
+        public RegistrationAnswer Registration(Message message)
+        {
+            var authData = JsonConvert.DeserializeObject<AuthData>(message.MessageText);
+            var user = ServerData.Users.FirstOrDefault(x => x.Login == authData.Login);
+            var answer = new RegistrationAnswer();
+            if (user == null)
+            {
+                ServerData.Users.Add(authData);
+                answer.Message = RegistrationAnswer.RegistrationMessage.Correct;
+            }
+            else
+                answer.Message = RegistrationAnswer.RegistrationMessage.LoginConcerned; 
+
+            return answer; 
+        }
+
+        public List<NewsEntityLite> GetNewsEntityLiteList()
+        {
+            return ServerData.NewsEntities.Select(x => new NewsEntityLite() { Id = x.Id, Name = x.Name }).ToList();
+        }
+
+        public NewsEntity GetNewsEntity(Message message)
+        {
+
+            return ServerData.NewsEntities.FirstOrDefault(x => x.Id == 0); 
         }
     }
 }

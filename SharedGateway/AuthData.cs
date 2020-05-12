@@ -20,6 +20,16 @@ namespace SharedGateway
         }
 
         public AuthMessage Message { get; set; }
+    }
 
+    public class RegistrationAnswer
+    {
+        public enum RegistrationMessage
+        {
+            Correct,
+            LoginConcerned,
+        }
+
+        public RegistrationMessage Message { get; set; }
     }
 }
