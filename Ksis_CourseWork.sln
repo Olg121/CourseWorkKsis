@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 		{5F32C21A-3E74-4115-8C54-F059EC547143} = {5F32C21A-3E74-4115-8C54-F059EC547143}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedGateway", "SharedGateway\SharedGateway.csproj", "{5F32C21A-3E74-4115-8C54-F059EC547143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedGateway", "SharedGateway\SharedGateway.csproj", "{5F32C21A-3E74-4115-8C54-F059EC547143}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

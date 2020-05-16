@@ -101,6 +101,7 @@
             this.newsTextMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newsTextMemoEdit.Location = new System.Drawing.Point(0, 0);
             this.newsTextMemoEdit.Name = "newsTextMemoEdit";
+            this.newsTextMemoEdit.Properties.ReadOnly = true;
             this.newsTextMemoEdit.Size = new System.Drawing.Size(606, 519);
             this.newsTextMemoEdit.TabIndex = 0;
             // 

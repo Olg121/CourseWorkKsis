@@ -37,5 +37,10 @@ namespace Client.Forms
             currentModePanel.Controls.Clear();
             currentModePanel.Controls.Add(CreateNewsControl); 
         }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
