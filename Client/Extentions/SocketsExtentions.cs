@@ -17,7 +17,6 @@ namespace Client
         public static SocketsExtentions SocketsLogicInstance; 
         private const int port = 5533;
         private const string serverAdress = "127.0.0.1";
-
         private TcpClient client; 
 
         private TcpClient GetClient()

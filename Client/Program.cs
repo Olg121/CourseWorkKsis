@@ -23,10 +23,7 @@ namespace Client
                 authorizeForm.ShowDialog();
                 if (authorizeForm.DialogResult == DialogResult.OK)
                     Application.Run(new MainForm());
-            }
-
-                
-            
+            }      
         }
     }
 }

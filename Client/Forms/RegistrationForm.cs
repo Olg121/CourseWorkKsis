@@ -28,7 +28,7 @@ namespace Client.Forms
             }
             else
             if (message != string.Empty)
-                MessageBox.Show("Ошибка регистрации", message);
+                MessageBox.Show(message, "Ошибка регистрации");
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

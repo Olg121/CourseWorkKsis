@@ -32,10 +32,9 @@ namespace Client
                 return Authorized = true;
             }
             else if (authDataAnswer.Message == AuthDataAnswer.AuthMessage.IncorrectPassword)
-                errorMessage = "Не правильный пароль";
+                errorMessage = "Неправильный пароль";
             else if (authDataAnswer.Message == AuthDataAnswer.AuthMessage.AcountNotFound)
                 errorMessage = "Акаунт не зарегистрирован"; 
-            
         
             return Authorized = false; 
         }

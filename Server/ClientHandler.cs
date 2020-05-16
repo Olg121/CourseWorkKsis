@@ -12,28 +12,6 @@ using static SharedGateway.AuthDataAnswer;
 
 namespace Server
 {
-    class MainClass
-    {
-        public const int port = 5533;
-        public static TcpListener listener;
-
-        static void Main()
-        {
-            listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
-            listener.Start();
-
-            while (true)
-            {
-                var client = listener.AcceptTcpClient();
-                var clientObject = new ClientHandler(client); 
-
-                var clientThread = new Thread(new ThreadStart(clientObject.Process));
-                clientThread.Start();
-            }
-
-        }
-    }
-
     public class ClientHandler
     {
         public TcpClient client;
@@ -44,7 +22,7 @@ namespace Server
 
         public void Process()
         {
-            NetworkStream stream = null; 
+            NetworkStream stream = null;
 
             try
             {
@@ -63,7 +41,7 @@ namespace Server
                     while (stream.DataAvailable);
                     var message = JsonConvert.DeserializeObject<Message>(builder.ToString());
 
-                    Message answerMessage = null; 
+                    Message answerMessage = null;
 
                     if (message.MessageType == Message.MessageTypeEnum.Authorize)
                     {
@@ -72,7 +50,7 @@ namespace Server
 
                     if (message.MessageType == Message.MessageTypeEnum.Registration)
                     {
-                        answerMessage = CreateMessageAnswer(Registration(message), Message.MessageTypeEnum.RegistrationAnswer); 
+                        answerMessage = CreateMessageAnswer(Registration(message), Message.MessageTypeEnum.RegistrationAnswer);
                     }
 
                     if (message.MessageType == Message.MessageTypeEnum.GetNewsEntitysLiteList)
@@ -133,9 +111,9 @@ namespace Server
                 authDataAnswer.Message = AuthMessage.IncorrectPassword;
             else
                 authDataAnswer.Message = AuthMessage.Correct;
-            return authDataAnswer; 
+            return authDataAnswer;
         }
-    
+
         public RegistrationAnswer Registration(Message message)
         {
             var authData = JsonConvert.DeserializeObject<AuthData>(message.MessageText);
@@ -147,9 +125,9 @@ namespace Server
                 answer.Message = RegistrationAnswer.RegistrationMessage.Correct;
             }
             else
-                answer.Message = RegistrationAnswer.RegistrationMessage.LoginConcerned; 
+                answer.Message = RegistrationAnswer.RegistrationMessage.LoginConcerned;
 
-            return answer; 
+            return answer;
         }
 
         public GetNewsEntitysLiteListAnswer GetNewsEntityLiteList()
@@ -169,23 +147,23 @@ namespace Server
             {
                 newsEntity = ServerData.NewsEntities.FirstOrDefault(x => x.Id == newsEntityId)
             };
-            return answer; 
+            return answer;
         }
 
         public CreateNewsEntityAnswer CreateNewsEntity(Message message)
         {
             var newsEntity = JsonConvert.DeserializeObject<CreateNewsEntityRequest>(message.MessageText).NewsEntity;
             long id;
-            Random random = new Random(); 
+            Random random = new Random();
             do
             {
-                id = random.Next(); 
+                id = random.Next();
             } while (ServerData.NewsEntities.Any(x => x.Id == id));
 
-            newsEntity.Id = id; 
+            newsEntity.Id = id;
             ServerData.NewsEntities.Add(newsEntity);
 
-            return new CreateNewsEntityAnswer(); 
+            return new CreateNewsEntityAnswer();
         }
     }
 }
